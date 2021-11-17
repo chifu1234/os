@@ -6,7 +6,7 @@ jobs:
     steps:
       - run: echo "🎉 Lets start by getting all deps"
       - run: sudo apt update
-      - run: sudo apt-get install -y git-core gitk git-gui curl lvm2 thin-provisioning-tools python-pkg-resources python3-virtualenv python3-oauth2client xz-utils    python3.6
+      - run: sudo apt-get install -y git-core gitk curl lvm2 thin-provisioning-tools python-pkg-resources python3-virtualenv python3-oauth2client xz-utils    python3.6
       - run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git ~/depot_tools
       - run: export PATH=~/depot_tools:$PATH 
       - run: echo "🐧 Now get the sources (around 30min)"
