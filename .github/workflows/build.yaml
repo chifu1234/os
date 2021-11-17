@@ -12,8 +12,8 @@ jobs:
       - run: echo "🐧 Now get the sources (around 30min)"
       - run: mkdir ~/chromiumos
       - run: cd ~/chromiumos
-      - run: ~/depot_tools/repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git
-      - run: ~/depot_tools/repo sync -j16 -g minilayout
+      - run: ~/depot_tools/repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git -g minilayout
+      - run: ~/depot_tools/repo sync -j16 
       - run: echo "🔎 Now let's build chromium os (1h)."
       - run: ~/depot_tools/cros_sdk
       - run: ~/depot_tools/cros_sdk
