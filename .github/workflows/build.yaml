@@ -1,0 +1,22 @@
+name: Chomium OS build
+on: [push, workflow_dispatch]
+jobs:
+  chromium-os-build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 Lets start by getting all deps"
+      - run: apt-get install -y git-core gitk git-gui curl lvm2 thin-provisioning-tools python-pkg-resources python-virtualenv python-oauth2client xz-utils    python3.6
+      - run: git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git /depot_tools
+      - run: export PATH=/depot_tools/:$PATH 
+      - run: echo "🐧 Now get the sources (around 30min)"
+      - run: mkdir ~/chromiumos
+      - run: cd ~/chromiumos
+      - run: /depot_tools/repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git
+      - run: /depot_tools/repo sync -j16
+      - run: echo "🔎 Now let's build chromium os (1h)."
+      - run: /depot_tools/cros_sdk
+      - run: /depot_tools/cros_sdk
+      - run: export BOARD=amd64-generic
+      - run: setup_board --board=${BOARD}
+      - run: ./build_packages --board=${BOARD}
+      - run: ./build_image --board=${BOARD} --noenable_rootfs_verification test
