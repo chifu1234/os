@@ -17,7 +17,6 @@ jobs:
       - run: echo "🔎 Now let's build chromium os (1h)."
       - run: ~/depot_tools/cros_sdk
       - run: ~/depot_tools/cros_sdk
-      - run: export BOARD=amd64-generic
-      - run: setup_board --board=${BOARD}
-      - run: ./build_packages --board=${BOARD}
-      - run: ./build_image --board=${BOARD} --noenable_rootfs_verification test
+      - run: ~/depot_tools/cros_sdk setup_board --board=amd64-generic
+      - run: ~/depot_tools/cros_sdk ./build_packages --board=amd64-generic
+      - run: ~/depot_tools/cros_sdk ./build_image --board=amd64-generic --noenable_rootfs_verification test
