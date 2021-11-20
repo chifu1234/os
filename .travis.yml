@@ -21,3 +21,8 @@ script:
           cros_sdk setup_board --board=amd64-generic
           cros_sdk ./build_packages --board=amd64-generic
           cros_sdk ./build_image --board=amd64-generic --noenable_rootfs_verification test
+addons:
+  artifacts:
+    # ⋮
+    paths:
+    -  ~/chromiumos/src/build/images/amd64-generic/latest/chromiumos_test_image.bin
