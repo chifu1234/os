@@ -4,10 +4,20 @@ dist: focal
 install: travis_wait 120
 vm:
   size: x-large
-script:
-      - travis_wait 120 ./.scripts/ci.sh
+jobs:
+  include:
+    - stage: dependency
+      script: ./.scripts/dep.sh
+    - stage: repo-sync
+      script: travis_wait 30 ./.scripts/repo.sh
+    - stage: build-env
+      script: ./.scripts/repo.sh
 addons:
   artifacts:
     # ⋮
     paths:
     -  ~/chromiumos/src/build/images/amd64-generic/latest/chromiumos_test_image.bin
+cache:
+  apt: true
+  directories:
+  - ~/chromiumos
