@@ -9,7 +9,7 @@ jobs:
     - stage: dependency
       script: ./.scripts/dep.sh
     - stage: repo-sync
-      script: travis_wait 30 ./.scripts/repo.sh
+      script: travis_wait 50 ./.scripts/repo.sh
     - stage: build-env
       script: ./.scripts/build-env.sh
     - stage: build-chromiumos
