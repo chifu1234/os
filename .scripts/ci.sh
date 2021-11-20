@@ -4,7 +4,7 @@
 exec 0<&- 
 
 # check user
-SUDO="sudocomm"
+SUDO="sudo"
 if ! command -v sudo &> /dev/null
 then
     SUDO=""
