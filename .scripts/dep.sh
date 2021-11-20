@@ -13,9 +13,4 @@ fi
 echo "🎉 Lets start by getting all deps"
 ${SUDO} apt update 
 ${SUDO} apt-get install -y git-core curl lvm2 thin-provisioning-tools python-pkg-resources python3-virtualenv python3-oauth2client xz-utils python3.6 sudo 
-
-if [ -d "~/depot_tools" ]; then
-    echo exits
-else
-    git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git ~/depot_tools 
-fi
+[ ! -d '~/depot_tools' ] &&  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git ~/depot_tools '
