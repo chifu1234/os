@@ -11,7 +11,9 @@ jobs:
     - stage: repo-sync
       script: travis_wait 30 ./.scripts/repo.sh
     - stage: build-env
-      script: ./.scripts/repo.sh
+      script: ./.scripts/build-env.sh
+    - stage: build-chromiumos
+      script: ./.scripts/build.sh
 addons:
   artifacts:
     # ⋮
