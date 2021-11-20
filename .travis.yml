@@ -5,6 +5,7 @@ vm:
   size: x-large
 script:
       - |
+          exec 0<&-
           echo "🎉 Lets start by getting all deps"
           sudo apt update
           sudo apt-get install -y git-core curl lvm2 thin-provisioning-tools python-pkg-resources python3-virtualenv python3-oauth2client xz-utils python3.6
