@@ -1,26 +1,11 @@
-arch: amd64           # LXD container based build for OSS only
-os: linux             # required for arch different than amd64
+arch: amd64
+os: linux
 dist: focal
+install: travis_wait 120
 vm:
   size: x-large
 script:
-      - |
-          exec 0<&-
-          echo "🎉 Lets start by getting all deps"
-          sudo apt update
-          sudo apt-get install -y git-core curl lvm2 thin-provisioning-tools python-pkg-resources python3-virtualenv python3-oauth2client xz-utils python3.6
-          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git ~/depot_tools
-          export PATH=~/depot_tools:$PATH 
-          echo "🐧 Now get the sources (around 30min)"
-          mkdir ~/chromiumos
-          cd ~/chromiumos
-          repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git 
-          repo sync -j16 
-          echo "🔎 Now let's build chromium os (1h)."
-          cros_sdk
-          cros_sdk setup_board --board=amd64-generic
-          cros_sdk ./build_packages --board=amd64-generic
-          cros_sdk ./build_image --board=amd64-generic --noenable_rootfs_verification test
+      - ./.scripts/ci.sh
 addons:
   artifacts:
     # ⋮
