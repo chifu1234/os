@@ -5,7 +5,7 @@ install: travis_wait 120
 vm:
   size: x-large
 script:
-      - travis_wait ./.scripts/ci.sh
+      - travis_wait 120 ./.scripts/ci.sh
 addons:
   artifacts:
     # ⋮
