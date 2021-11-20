@@ -18,7 +18,7 @@ export PATH=~/depot_tools:$PATH
 echo "🐧 Now get the sources (around 30min)"
 mkdir ~/chromiumos 
 cd ~/chromiumos 
-repo init -u https://chromium.googleso urce.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git 
+repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git
 repo sync -j16 
 echo "🔎 Now let's build chromium os (1h)."
 cros_sdk
