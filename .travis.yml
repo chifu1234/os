@@ -1,7 +1,7 @@
 arch: amd64
 os: linux
 dist: focal
-install: travis_wait 120
+language: c
 vm:
   size: x-large
 jobs:

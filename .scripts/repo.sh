@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Disable stdin
+exec 0<&- 
 export PATH=~/depot_tools:$PATH 
 mkdir ~/chromiumos 
 cd ~/chromiumos 
