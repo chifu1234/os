@@ -8,19 +8,37 @@ jobs:
   include:
     - stage: dependency
       script: ./.scripts/dep.sh
+      cache:
+        apt: true
+        directories:
+        - ~/depot_tools 
     - stage: repo-sync
       script: travis_wait 50 ./.scripts/repo.sh
+      cache:
+        apt: true
+        directories:
+        - ~/chromiumos
+        - ~/depot_tools 
     - stage: build-env
       script: ./.scripts/build-env.sh
+      cache:
+        apt: true
+        directories:
+        - ~/chromiumos
+        - ~/depot_tools 
     - stage: build-chromiumos
       script: ./.scripts/build.sh
-addons:
-  artifacts:
-    # ⋮
-    paths:
-    -  ~/chromiumos/src/build/images/amd64-generic/latest/chromiumos_test_image.bin
-cache:
-  apt: true
-  directories:
-  - ~/chromiumos
-  - ~/depot_tools 
+      cache:
+        apt: true
+        directories:
+        - ~/chromiumos
+        - ~/depot_tools 
+      addons:
+        artifacts:
+          paths:
+          -  ~/chromiumos/src/build/images/amd64-generic/latest/chromiumos_test_image.bin
+# cache:
+#   apt: true
+#   directories:
+#   - ~/chromiumos
+#   - ~/depot_tools 
