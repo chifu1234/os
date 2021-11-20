@@ -1,6 +1,8 @@
-arch: arm64           # LXD container based build for OSS only
+arch: amd64           # LXD container based build for OSS only
 os: linux             # required for arch different than amd64
 dist: focal
+vm:
+  size: large
 script:
       - |
           echo "🎉 Lets start by getting all deps"
